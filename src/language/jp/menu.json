@@ -1,0 +1,49 @@
+{
+  "WebGroup": "網站管理(日)",
+  "slideBanners": "輪播圖管理(日)",
+  "advertisements": "廣告圖管理(日)",
+  "floatWindows": "浮動視窗(日)",
+  "helpCenterMains": "幫助中心(日)",
+  "headerLinks": "頁首管理(日)",
+  "footerLinks": "頁尾管理(日)",
+  "menus": "選單管理(日)",
+  "privateMsgs": "站內信推播(日)",
+  "MemberGroup": "會員管理(日)",
+
+  "members": "會員資料(日)",
+  "records": "瀏覽紀錄(日)",
+  "dailyReports": "日報表(日)",
+
+  "VideoGroup": "影片管理(日)",
+  "videos": "影片管理(日)",
+  "videoTags": "標籤管理(日)",
+  "keywords": "關鍵字管理(日)",
+  "videoCompanies": "片商管理(日)",
+  "videoADs": "平台廣告影片管理(日)",
+
+  "SystemGroup": "後台管理(日)",
+  "admins": "管理員帳號管理(日)",
+  "groups": "權限群組管理(日)",
+  "platforms": "平台管理(日)",
+  "systemMenus": "系統選單管理(日)",
+  "whiteIp": "白名單(日)",
+  "themes": "主題樣式(日)",
+  "webSetting": "網站設定(日)",
+  "contractors": "委外廠商管理(日)",
+
+  "HandoverGroup": "交接管理(日)",
+  "handovers": "交接資訊(日)",
+  "handoverTypes": "交接類別(日)",
+  "handoverTags": "交接標籤(日)",
+
+  "BulletinGroup": "公告管理(日)",
+  "bulletinMainClasses": "公告分類(日)",
+  "bulletins": "公告資料管理(日)",
+
+  "SiteInfoGroup": "站台資訊管理(日)",
+  "platformManagement": "站台別管理(日)",
+  "purposeManagement": "用途別管理(日)",
+  "typeManagement": "類別管理(日)",
+  "dynamicrequiredManagement": "動態必填管理(日)",
+  "AccountManagement": "帳密管理(日)"
+}

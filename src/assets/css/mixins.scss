@@ -1,0 +1,469 @@
+//========== variable ==========
+$mainCrl: #2d253a;
+$mainCrlDark: #1e1a29;
+$mainCrlLight: #5b516b;
+$mainCrlInput: #616284;
+$mainCrlBlue: #373f61;
+$grayTxt: #8c8c8c;
+$darkGrayTxt: #606266;
+$grayBg: #edeff3;
+$orangeCrl: #ff6c5f;
+
+$purpleBtn: #5d6588;
+$orangeBtn: #e49250;
+$blueBtn: #5b8698;
+$redBtn: #db6464;
+$greenBtn: #598d63;
+$greenLightBtn: #48bfb0;
+$grayBtn: #909399;
+$brownBtn: #979388;
+$redDarkBtn: #a6747c;;
+
+//========== extend ==========
+
+%setWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;;
+}
+
+%setCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 100%;
+  max-height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+%limitWords {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//========== mixin ==========
+
+@mixin size($w,$h:$w,$m:auto) {
+  width: $w;
+  height: $h;
+  @if ($m) {
+    margin: $m;
+  }
+}
+
+@mixin AutoSize($w, $m:auto) {
+  margin: $m;
+  width: $w;
+}
+
+@mixin Flex($j:center,$a:center) {
+  display: flex;
+  align-items: $a;
+  justify-content: $j;
+}
+
+@mixin BgImg($file,$w:null,$h:null,$size: 100% 100%,$post: top center,$repeat: no-repeat,$c:null) {
+  background-position: $post;
+  background-repeat: $repeat;
+  background-size: $size;
+  background-image: url(~@img/#{$file});
+  @if ($c) {
+    @include Bgc($c); }
+  @if ($w and $h) {
+    @include size($w, $h); }
+}
+
+@mixin PosAbs($top:0,$right:null,$bottom: null,$left: 0,$zindex:null) {
+  position: absolute;
+  top: $top;
+  bottom: $bottom;
+  right: $right;
+  left: $left;
+  z-index: $zindex;
+}
+
+@mixin Bgc($color) {
+  background-color: $color;
+}
+
+@mixin Border($w, $c) {
+  border: $w solid $c;
+}
+
+@mixin BrdRad($tl, $tr:$tl, $br:$tl, $bl:$tl) {
+  border-radius: $tl $tr $br $bl;
+}
+
+@mixin Font($s, $ls:null, $lh:initial, $b: normal ,$f:initial) {
+  font-size: $s;
+  font-family: $f;
+  font-weight: $b;
+  letter-spacing: $ls;
+  line-height: $lh;
+}
+
+@mixin Btn($s: 1rem, $lh:initial ) {
+  font-size: $s;
+  font-family: Microsoft JhengHei;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: $lh;
+  letter-spacing: 0.1rem;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//========== Element UI mixin ==========
+
+/* 復合式組合框 */
+@mixin complexStyle($txtColor, $color) {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  .el-input__inner {
+    color: $txtColor;
+    border: 1px solid $color;
+    border-radius: 0;
+  }
+
+  .el-input {
+    &.is-disabled {
+      .el-input__inner {
+        color: #c0c4cc;
+        border-color: #e4e7ed;
+      }
+
+      &:hover {
+        .el-input__inner {
+          color: #c0c4cc;
+          border-color: #e4e7ed;
+        }
+      }
+    }
+  }
+
+  .el-select {
+    &:hover {
+      .el-input__inner {
+        border: 1px solid $color;
+      }
+    }
+
+    .el-input {
+      .el-input__suffix,
+      .el-input__suffix-inner i {
+        color: $color;
+      }
+
+      &.is-disabled {
+        .el-input__suffix,
+        .el-input__suffix-inner i {
+          color: #ccc;
+        }
+      }
+
+      &.is-focus {
+        .el-input__inner {
+          border-color: $color;
+        }
+      }
+    }
+
+    .el-input__inner {
+      &:focus {
+        border-color: $color;
+      }
+    }
+  }
+
+  .el-form-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    margin: 0 0 0.5em;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    & + .search-form {
+      margin-left: -0.7em;
+    }
+
+    & + .el-form-item {
+      margin-left: 0.7em;
+    }
+
+    &.closely {
+      & + .el-form-item {
+        margin-left: 0;
+      }
+    }
+
+    .el-select {
+      width: 120px;
+    }
+  }
+
+  .el-form-item__label {
+    padding: 0 10px;
+    color: #fff;
+    background-color: $color;
+    border-top: 1px solid $color;
+    border-bottom: 1px solid $color;
+    border-left: 1px solid $color;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  .el-form-item__content {
+    display: flex;
+  }
+
+  .el-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 34px;
+  }
+
+  .advancedSearch {
+    border-radius: 2px;
+  }
+
+  .el-date-editor--daterange {
+    &.el-input__inner {
+      border-left: 0;
+      border-right: 0;
+    }
+  }
+}
+
+/* 日期選擇組合框 */
+@mixin dateSelectStyle($dateColor) {
+  .el-form-item__label {
+    padding: 0;
+    border: unset;
+
+    .el-input__inner {
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .el-date-editor--daterange {
+    &.el-input__inner {
+      border-color: $dateColor;
+
+      &.is-active {
+        border-color: $dateColor;
+  
+        &:hover {
+          border-color: $dateColor;
+        }
+      }
+
+      .el-range__icon,
+      .el-range__close-icon,
+      .el-range-separator {
+        color: $dateColor;
+        line-height: 28px;
+      }
+  
+      .el-range-separator {
+        width: 20px;
+      }
+    }
+  }
+}
+
+/* 開關 */
+@mixin switchStyle($closeColor, $openColor) {
+  .el-switch__core {
+    background-color: $closeColor;
+    border-color: $closeColor;
+  }
+
+  .el-switch__label {
+    color: $darkGrayTxt;
+
+    &.el-switch__label--right {
+      &.is-active {
+        color: $openColor;
+      }
+    }
+
+    &.el-switch__label--left {
+      &.is-active {
+        color: $closeColor;
+      }
+    }
+  }
+
+  &.is-checked {
+    .el-switch__core {
+      background-color: $openColor;
+      border-color: $openColor;
+    }
+  }
+}
+
+/* radio - 單選群組 */
+@mixin radioGroup($color) {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .el-radio-button__inner {
+    padding: 9px 20px;
+    color: $color;
+    border-color: $color;
+    border-radius: 0;
+  }
+
+  .el-radio-button:first-child .el-radio-button__inner {
+    border-left: 1px solid $color;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  .el-radio-button:last-child .el-radio-button__inner {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+  .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    color: #fff;
+    background: $color;
+    border-color: $color;
+  }
+}
+
+/* 上傳檔案 */
+@mixin uploadStyle($bgColor, $color) {
+  .el-upload {
+    width: 100%;
+    
+    .el-upload-dragger {
+      width: 100%;
+      height: 50px;
+      background: $bgColor;
+
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .el-icon-upload {
+        margin: 0 15px 0 0;
+        font-size: 32px;
+        color: $color;
+      }
+    }
+  }
+}
+
+/* append (input + button) */
+@mixin appendInput($color) {
+  .el-input__inner {
+    border-radius: 0 !important;
+  }
+  
+  .el-input-group__append,
+  .el-input-group__prepend {
+    color: #fff;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: $color;
+    border-color: $color;
+  
+    &:hover {
+      color: #fff;
+      background-color: rgba($color, 0.85);
+    }
+  }
+}
+
+/* 風險等級 radio */
+$riskLevel-colors: #68c27c, #64cbec, #fbc26f, #f67b71;
+$riskLevel-len: length($riskLevel-colors);
+$riskLevel-name: (safe, low, medium, hight);
+$riskLevel-cn: ('無', '低', '中', '高');
+
+@mixin riskRaido {
+  .el-radio-button {
+    &:first-child {
+      .el-radio-button__inner {
+        border: 0;
+      }
+    }
+  }
+
+  .el-radio-button__inner {
+    padding: 8px 11px;
+    color: #fff;
+    border-width: 0;
+    box-shadow: none;
+  }
+
+
+  @for $i from 1 through $riskLevel-len {
+    .el-radio-button {
+      &:nth-child(#{$i}) {
+        .el-radio-button__inner {
+          background: nth($riskLevel-colors, $i);
+
+          &::before {
+            content: nth($riskLevel-cn, $i);
+          }
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through $riskLevel-len {
+    .el-radio-button.is-active {
+      &:nth-child(#{$i}) {
+        &::before {
+          border-color: nth($riskLevel-colors, $i);
+        }
+      }
+    }
+  }
+
+  .el-radio-button {
+    margin-right: 8px;
+
+    &::before {
+      @include PosAbs(-3px, -3px, -3px, -3px);
+
+      content: '';
+      border: 2px solid transparent;
+      border-radius: 3px;
+    }
+    
+    .el-radio-button__inner {
+      border-radius: 3px !important;
+    }
+  }
+}

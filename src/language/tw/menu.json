@@ -1,0 +1,49 @@
+{
+  "WebGroup": "網站管理",
+  "slideBanners": "輪播圖管理",
+  "advertisements": "廣告圖管理",
+  "floatWindows": "浮動視窗",
+  "helpCenterMains": "幫助中心",
+  "headerLinks": "頁首管理",
+  "footerLinks": "頁尾管理",
+  "menus": "選單管理",
+  "privateMsgs": "站內信推播",
+  "MemberGroup": "會員管理",
+
+  "members": "會員資料",
+  "records": "瀏覽紀錄",
+  "dailyReports": "日報表",
+
+  "VideoGroup": "影片管理",
+  "videos": "影片管理",
+  "videoTags": "標籤管理",
+  "keywords": "關鍵字管理",
+  "videoCompanies": "片商管理",
+  "videoADs": "平台廣告影片管理",
+
+  "SystemGroup": "後台管理",
+  "admins": "管理員帳號管理",
+  "groups": "權限群組管理",
+  "platforms": "平台管理",
+  "systemMenus": "系統選單管理",
+  "whiteIp": "白名單",
+  "themes": "主題樣式",
+  "webSetting": "網站設定",
+  "contractors": "委外廠商管理",
+
+  "HandoverGroup": "交接管理",
+  "handovers": "交接資訊",
+  "handoverTypes": "交接類別",
+  "handoverTags": "交接標籤",
+
+  "BulletinGroup": "公告管理",
+  "bulletinMainClasses": "公告分類",
+  "bulletins": "公告資料管理",
+
+  "SiteInfoGroup": "站台資訊管理",
+  "platformManagement": "站台別管理",
+  "purposeManagement": "用途別管理",
+  "typeManagement": "類別管理",
+  "dynamicrequiredManagement": "動態必填管理",
+  "AccountManagement": "帳密管理"
+}

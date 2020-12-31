@@ -1,0 +1,836 @@
+$riskLevel-colors: #68c27c, #64cbec, #fbc26f, #f67b71;
+$riskLevel-len: length($riskLevel-colors);
+$riskLevel-name: (safe, low, medium, hight);
+$riskLevel-cn: ('無', '低', '中', '高');
+
+.el-button {
+  padding: 0 1rem;
+  border-radius: 3px;
+  line-height: 2rem;
+
+  &.el-button--medium {
+    padding: 0 0.7rem;
+  }
+
+  &.el-button--small {
+    padding: 0 0.7rem;
+    line-height: 1.7rem;
+  }
+
+  &.el-button--mini {
+    padding: 0 0.5rem;
+    line-height: 1.5rem;
+  }
+
+  &--add {
+    color: #fff;
+    background-color: $greenLightBtn;
+    border-color: $greenLightBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($greenLightBtn, 0.85);
+      border-color: $greenLightBtn;
+    }
+  }
+
+  &--success,
+  &--save,
+  &--excel {
+    color: #fff;
+    background-color: $greenBtn;
+    border-color: $greenBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($greenBtn, 0.85);
+      border-color: $greenBtn;
+    }
+  }
+
+  &--edit {
+    color: #fff;
+    background-color: $purpleBtn;
+    border-color: $purpleBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($purpleBtn, 0.85);
+      border-color: $purpleBtn;
+    }
+  }
+
+  &--danger,
+  &--cancel {
+    color: #fff;
+    background-color: $redBtn;
+    border-color: $redBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($redBtn, 0.85);
+      border-color: $redBtn;
+    }
+  }
+
+  &--copy {
+    color: #fff;
+    background-color: $orangeBtn;
+    border-color: $orangeBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($orangeBtn, 0.85);
+      border-color: $orangeBtn;
+    }
+  }
+
+  &--view {
+    color: #fff;
+    background-color: $blueBtn;
+    border-color: $blueBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($blueBtn, 0.85);
+      border-color: $blueBtn;
+    }
+  }
+
+  &--refresh {
+    color: #fff;
+    background-color: #4493b4;
+    border-color: #4493b4;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba(#4493b4, 0.85);
+      border-color: #4493b4;
+    }
+  }
+
+  &--info,
+  &--back {
+    color: #fff;
+    background-color: $grayBtn;
+    border-color: $grayBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($grayBtn, 0.85);
+      border-color: $grayBtn;
+    }
+  }
+
+  &--search {
+    color: #fff;
+    background-color: rgba($mainCrlLight, 0.95);
+    border-color: $mainCrlLight;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($mainCrlLight, 0.85);
+      border-color: $mainCrlLight;
+    }
+  }
+
+  &--rank {
+    color: #fff;
+    background-color: rgba($redDarkBtn, 0.95);
+    border-color: $redDarkBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($redDarkBtn, 0.85);
+      border-color: $redDarkBtn;
+    }
+  }
+
+  &--bd {
+    &-edit {
+      color: #373f61;
+      background-color: #e8eaf2;
+      border-color: rgba(#415195, 0.12);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #757c9a;
+        border-color: rgba(#415195, 0.85);
+      }
+    }
+
+    &-copy {
+      color: $orangeBtn;
+      background-color: #fbefe5;
+      border-color: rgba(#e7924e, 0.15);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #e8a26a;
+        border-color: rgba($orangeBtn, 0.85);
+      }
+    }
+
+    &-danger,
+    &-cancel {
+      color: $redBtn;
+      background-color: #fae8e8;
+      border-color: rgba($redBtn, 0.15);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #e07b7b;
+        border-color: rgba($redBtn, 0.85);
+      }
+    }
+
+    &-success,
+    &-save {
+      color: $greenBtn;
+      background-color: #e6f1e8;
+      border-color: rgba(#57a366, 0.15);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #729e7a;
+        border-color: rgba($greenBtn, 0.85);
+      }
+    }
+
+    &-view,
+    &-record,
+    &-send {
+      color: $blueBtn;
+      background-color: #e5eff4;
+      border-color: rgba(#5295b2, 0.15);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #7398a7;
+        border-color: $blueBtn;
+      }
+    }
+
+    &-add {
+      color: $greenLightBtn;
+      background-color: #e0f4f2;
+      border-color: rgba($greenLightBtn, 0.15);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #63c9bc;
+        border-color: rgba($greenLightBtn, 0.85);
+      }
+    }
+
+    &-sub {
+      color: #777b84;
+      background-color: #f0f0f2;
+      border-color: rgba(#979ca6, 0.25);
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+        background-color: #a1a3a8;
+        border-color: rgba($grayBtn, 0.85);
+      }
+    }
+  }
+
+  i {
+    font-size: 1.2em;
+
+    & + span {
+      margin-left: 5px;
+    }
+  }
+}
+
+.el-input__inner {
+  padding: 0 10px;
+  height: 34px;
+  border-color: rgba($mainCrlLight, 0.25);
+  border-radius: 2px;
+  line-height: 34px;
+
+  &:focus {
+    border-color: rgba($mainCrlLight, 0.65);
+  }
+}
+
+.el-select {
+  .el-input {
+    border-color: rgba($mainCrlLight, 0.25);
+    
+    &.is-focus {
+      border-color: rgba($mainCrlLight, 0.65);
+    }
+  }
+}
+
+.el-select-dropdown {
+  .el-select-dropdown__list {
+    max-width: 500px;
+  }
+
+  &.iconDropdown {
+    .el-select-dropdown__item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      width: 80px;
+      font-size: 20px;
+    }
+  }
+}
+
+.el-input__icon {
+  line-height: 34px;
+}
+
+.el-form-item__content {
+  min-height: 34px;
+  line-height: 34px;
+  box-sizing: border-box;
+}
+
+.el-form-item__label {
+  height: 34px;
+  line-height: 34px;
+  box-sizing: border-box;
+}
+
+.el-input__prefix,
+.el-input__suffix {
+  color: $mainCrlLight;
+}
+
+.el-input__suffix {
+  right: 10px;
+}
+
+.complex-group {
+  @include complexStyle($darkGrayTxt, $mainCrlLight);
+}
+
+.selectTimer-group {
+  @include dateSelectStyle($mainCrlLight);
+}
+
+.switch-group {
+  @include switchStyle($redBtn, $greenBtn);
+}
+
+.searchBox,
+.appendBox {
+  @include appendInput($mainCrlLight);
+}
+
+.el-radio-group {
+  @include radioGroup(#5b516b);
+}
+
+/* 表格 */
+.main-table {
+  th {
+    padding: 0;
+    height: 36px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #616284;
+
+    .cell {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  td {
+    padding: 7px 0;
+    
+    &.text-start {
+      text-align: left;
+    }
+
+    span {     
+      &.not-drag,
+      &.drag-handler {
+        display: block;
+        padding: 10px 0;
+      }
+
+      &.drag-handler {
+        cursor: grab;
+        width: 100%;
+      }
+  
+      &.not-drag {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  td,
+  th {
+    text-align: center;
+  }
+
+  &.el-table--enable-row-hover {
+    .el-table__body tr {
+      &:hover {
+        > td {
+          background-color: #f2fbf7;
+        }
+      }
+    }
+  }
+
+  .el-table__body tr {
+    &.hover-row {
+      > td {
+        background-color: #f2fbf7;
+      }
+    }
+  }
+
+
+  &.el-table {
+    .ascending {
+      .sort-caret {
+        &.ascending {
+          border-bottom-color: #9ce9e0;
+        }
+      }
+    }
+
+    .descending {
+      .sort-caret {
+        &.descending {
+          border-top-color: #9ce9e0;
+        }
+      }
+    }
+  }
+
+  td {
+    .enable,
+    .stopped,
+    .notyet,
+    .error {
+      display: inline-block;
+      padding: 0 8px;
+      font-size: 12px;
+      border-radius: 5px;
+    }
+
+    .enable {
+      color: #2b8400;
+      background: #e2f3da;
+    }
+
+    .stopped {
+      color: #d82f2f;
+      background: #fef0f0;
+    }
+
+    .notyet {
+      color: #7b808b;
+      background: #eef3f7;
+    }
+
+    .error {
+      color: #d82f2f;
+      background: #fef0f0;
+    }
+
+    .collect {
+      color: #f56c6c;
+    }
+
+    .not-collect {
+      color: #e1e1e1;
+    }
+
+    .risk {
+      display: inline-block;
+      padding: 0 8px;
+      color: #fff;
+      border-radius: 3px;
+      line-height: 28px;
+    }
+
+    
+
+    @for $i from 1 through $riskLevel-len {
+      .risk {
+        &.#{nth($riskLevel-name, $i)} {
+          background: nth($riskLevel-colors, $i);
+        }
+      }
+    }
+    
+    .tab,
+    .page {
+      @include Flex(center);
+
+      &::before {
+        margin: 0 5px 0 0;
+        font-size: 20px;
+        font-family: 'element-icons' !important;
+      }
+    }
+
+    .tab {
+      &::before {
+        content: '\e78a';
+      }
+    }
+
+    .page {
+      &::before {
+        content: '\e78b';
+      }
+    }
+  }
+
+  .caret-wrapper {
+    width: 15px;
+  }
+}
+
+.mainScroll {
+  &.fontSize-110p .main-table {
+    font-size: 15.4px;
+
+    .el-button {
+      margin: 0 5px 10px !important;
+      font-size: 14.3px;
+    }
+  }
+
+  &.fontSize-125p .main-table {
+    font-size: 17.5px;
+
+    .el-button {
+      margin: 0 5px 10px !important;
+      font-size: 16.25px;
+    }
+  }
+}
+
+
+.main-table {
+  .treeColumn {
+    display: flex;
+    align-items: center;
+    padding: 6px 20px;
+  }
+
+  &.actionsCell {
+    td:last-child {
+      padding-bottom: 0;
+    }
+
+    .btn-wrap {
+      display: inline-flex;
+      flex-wrap: wrap;
+
+      .el-button {
+        margin-right: 10px;
+        margin-bottom: 12px;
+
+        & + .el-button {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+/* 麵包屑 */
+.breadcrumbBlock {
+  @include Flex(flex-start);
+  
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: $darkGrayTxt;
+
+  > i {
+    margin-right: 10px;
+  }
+
+  .el-breadcrumb {
+    font-size: 14px;
+  }
+}
+
+.el-pagination {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  button {
+    &:hover {
+      color: $mainCrlLight;
+    }
+
+    &:disabled {
+      &:hover {
+        color: #c0c4cc;
+      }
+    }
+  }
+}
+
+.el-pager {
+  li {
+    min-width: 30px;
+    height: 28px;
+    background-color: $grayBg;
+    border-radius: 2px;
+    line-height: 28px;
+
+    & + li {
+      margin-left: 8px;
+    }
+
+    &.active,
+    &:hover {
+      color: #fff;
+      background-color: #409eff;
+    }
+  }
+}
+
+.el-pagination__sizes {
+  .el-input {
+    .el-input__inner {
+      &:hover {
+        border-color: rgba($mainCrlLight, 0.65);
+      }
+    }
+  }
+}
+
+.el-input,
+.el-textarea,
+.el-date-editor {
+  .el-input__inner,
+  .el-textarea__inner,
+  .el-time-panel__footer,
+  .el-picker-panel__footer,
+  .el-range-input {
+    &::placeholder {
+      color: rgba($grayTxt, 0.8);
+    }
+  }
+}
+
+.el-input__inner,
+.el-textarea__inner,
+.el-time-panel__btn,
+.el-range-input {
+  font-family: Microsoft JhengHei, Microsoft Yahei, Helvetica, Hiragino Sans GB, '微软雅黑', Arial, 'sans-serif';
+}
+
+.el-checkbox {
+  &.is-bordered {
+    margin-bottom: 10px;
+
+    &.is-checked { // 暫存
+      border-color: $mainCrlLight;
+    }
+    
+    & + .el-checkbox {
+      &.is-bordered {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .el-checkbox__input {
+    &.is-checked,
+    &.is-indeterminate {
+      .el-checkbox__inner {
+        background-color: $mainCrlLight;
+        border-color: $mainCrlLight;
+      }
+
+      & + .el-checkbox__label {
+        color: $mainCrlLight;
+      }
+    }
+
+    &.is-focus {
+      .el-checkbox__inner {
+        border-color: rgba($mainCrlLight, 0.85);
+      }
+    }
+  }
+}
+
+.el-checkbox__inner {
+  border-color: rgba($mainCrlLight, 0.25);
+  border-radius: 0;
+
+  &:hover {
+    border-color: rgba($mainCrlLight, 0.85);
+  }
+}
+
+.el-radio__inner {
+  border-color: rgba($mainCrlLight, 0.25);
+
+  &:hover {
+    border-color: rgba($mainCrlLight, 0.85);
+  }
+}
+
+.el-color-picker__trigger {
+  border-color: rgba($mainCrlLight, 0.25);
+  border-radius: 0;
+}
+
+.el-radio__input {
+  &.is-checked {
+    & + .el-radio__label {
+      color: $mainCrlLight;
+    }
+
+    .el-radio__inner {
+      background: #fff;
+      border-color: $mainCrlLight;
+
+      &::after {
+        @include size(6px);
+
+        background-color: $mainCrlLight;
+      }
+    }
+  }
+}
+
+.el-textarea__inner {
+  padding: 5px 10px;
+  border-color: rgba($mainCrlLight, 0.25);
+  border-radius: 2px;
+
+  &:focus {
+    border-color: rgba($mainCrlLight, 0.65);
+  }
+}
+
+.el-textarea {
+  .el-input__count {
+    background: none;
+  }
+}
+
+.el-radio-group {
+  &.risk-level {
+    @include riskRaido;
+  }
+}
+
+/* 彈窗按鈕 */
+.el-message-box {
+  .cancelButton {
+    color: #fff;
+    background-color: $redBtn;
+    border-color: $redBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($redBtn, 0.85);
+      border-color: $redBtn;
+    }
+  }
+
+  .confirmButton {
+    color: #fff;
+    background-color: $greenBtn;
+    border-color: $greenBtn;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+      background-color: rgba($greenBtn, 0.85);
+      border-color: $greenBtn;
+    }
+  }
+}
+
+/* loading spinner */
+.el-loading-spinner {
+  .circular {
+    width: 60px;
+    height: 60px;
+  }
+
+  .path {
+    stroke-width: 4px;
+  }
+}
+
+/** froala editor content ol,ul,li theme */
+.fr-element {
+  ol,
+  ul,
+  li {
+    list-style: unset;
+    list-style-position: inside;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+}

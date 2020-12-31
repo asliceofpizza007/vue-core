@@ -1,0 +1,10 @@
+{
+  "logOut": "登出",
+  "switchPlatform": "平台切換",
+  "userPreference": {
+    "toggleMenuList": "隱藏左側選單",
+    "toggleTagList": "隱藏右側標籤列",
+    "recordTabs": "記錄本次開起 Tab",
+    "fontSize": "字型大小"
+  }
+}

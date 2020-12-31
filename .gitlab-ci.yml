@@ -1,0 +1,116 @@
+image: registry.gitlab-ce.cyadmk.com:5000/docker/gitlab-cicd-pipeline-for-vue
+
+stages:
+  - build
+  - test
+  - deploy
+
+.init_rsync: &init_rsync |
+  echo ${RSYNC_SECRET} > /etc/rsync.secret
+  chmod 600 /etc/rsync.secret
+
+.change_file_permissions: &change_file_permissions |
+  find . -type f -not -path './node_modules/*' -exec chmod 664 {} \;
+  find . -type d -not -path './node_modules/*' -exec chmod 775 {} \;
+
+.change_file_owner: &change_file_owner |
+  addgroup -S de_us -g 503 && adduser -S de_us -G de_us -u 503
+  chown -R de_us.de_us ./
+
+build-testing:
+  stage: build
+  cache:
+    # key: ${CI_COMMIT_REF_SLUG}-npm
+    paths:
+      - node_modules/
+  script:
+      # - rm package-lock.json
+      - |-
+        if [[ $RP_CLEAN_HOUSE == "true" ]]; then
+            rm -rf node_modules
+            npm cache clean -f
+        fi
+      - node -v
+      - npm -v
+      - npm install
+      # - npm rebuild node-sass
+      - npm run build:testing
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist/
+  only:
+    - testing
+
+build-staging:
+  stage: build
+  cache:
+    # key: ${CI_COMMIT_REF_SLUG}-npm
+    paths:
+      - node_modules/
+  script:
+      - |-
+        if [[ $RP_CLEAN_HOUSE == "true" ]]; then
+            rm -rf node_modules
+            npm cache clean -f
+        fi
+      - npm install
+      - npm run build:staging
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist/
+  only:
+    - staging
+
+build-master:
+  stage: build
+  cache:
+    # key: ${CI_COMMIT_REF_SLUG}-npm
+    paths:
+      - node_modules/
+  script:
+      - |-
+        if [[ $RP_CLEAN_HOUSE == "true" ]]; then
+            rm -rf node_modules
+            npm cache clean -f
+        fi
+      - npm install
+      - npm run build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist/
+  only:
+    - master
+
+deploy-testing:
+  stage: deploy
+  script:
+    - *init_rsync
+    - *change_file_permissions
+    - *change_file_owner
+    - rsync -av --delete --exclude=.git --password-file=/etc/rsync.secret --port=${RSYNC_PORT_PHP7_TESTING} ./dist/ root@${RSYNC_HOST_TESTING}::${RSYNC_MODULE_TESTING}
+  only:
+    - testing
+
+deploy-staging:
+  stage: deploy
+  script:
+    - *init_rsync
+    - *change_file_permissions
+    - *change_file_owner
+    - rsync -av --delete --exclude=.git --password-file=/etc/rsync.secret --port=${RSYNC_PORT_PHP7_STAGING} ./dist/ root@${RSYNC_HOST_PHP7_STAGING}::${RSYNC_MODULE_STAGING}
+  only:
+    - staging
+
+deploy-master:
+  stage: deploy
+  script:
+    - *init_rsync
+    - *change_file_permissions
+    - *change_file_owner
+    - rsync -av --delete --exclude=.git --password-file=/etc/rsync.secret --port=${RSYNC_PORT_PHP7_MASTER} ./dist/ root@${RSYNC_HOST_PHP7_MASTER}::${RSYNC_MODULE_MASTER}
+  when: manual
+  only:
+    - master

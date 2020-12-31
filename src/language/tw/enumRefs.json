@@ -1,0 +1,22 @@
+{
+  "enum": {
+    "index_footer_1": "首頁首尾1",
+    "index_footer_2": "首頁首尾2",
+    "video_stop": "影片暫停",
+    "search_right_1": "搜尋頁右側1",
+    "search_right_2": "搜尋頁右側2",
+    "index_right": "首頁右側",
+    "index_left": "首頁左側",
+    "index_right_bottom": "首頁右下方",
+    "index_left_bottom": "首頁左下方",
+    "member_normal": "一般會員",
+    "member_vip": "VIP會員",
+    "same_page": "同頁",
+    "another_page": "另開",
+    "main_page": "主頁",
+    "search_page": "搜尋頁",
+    "index": "首頁",
+    "index_manage": "首頁管理",
+    "footer_manage": "頁尾管理"
+  }
+}

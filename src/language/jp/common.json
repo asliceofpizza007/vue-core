@@ -1,0 +1,10 @@
+{
+  "logOut": "logOut",
+  "switchPlatform": "switchPlatform",
+  "userPreference": {
+    "toggleMenuList": "toggleMenuList",
+    "toggleTagList": "toggleTagList",
+    "recordTabs": "RecordTabs",
+    "fontSize": "fontSize"
+  }
+}

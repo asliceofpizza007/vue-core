@@ -1,0 +1,22 @@
+{
+  "enum": {
+    "index_footer_1": "index_footer_1",
+    "index_footer_2": "index_footer_2",
+    "video_stop": "video_stop",
+    "search_right_1": "search_right_1",
+    "search_right_2": "search_right_2",
+    "index_right": "index_right",
+    "index_left": "index_left",
+    "index_right_bottom": "index_right_bottom",
+    "index_left_bottom": "index_left_bottom",
+    "member_normal": "member_normal",
+    "member_vip": "member_vip",
+    "same_page": "same_page",
+    "another_page": "another_page",
+    "main_page": "main_page",
+    "search_page": "search_page",
+    "index": "index",
+    "index_manage": "index_manage",
+    "footer_manage": "footer_manage"
+  }
+}

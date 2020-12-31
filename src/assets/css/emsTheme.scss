@@ -1,0 +1,303 @@
+//========== variable ==========
+$redBtn: #bc332d;
+$greenBtn: #43725a;
+$mainCrl: #3c8dbc;
+
+.emsTheme {
+  .el-input__inner {
+    border-color: #d6d3da;
+  
+    &:focus {
+      border-color: $mainCrl;
+    }
+  }
+
+  .el-select {
+    .el-input {
+      border-color: #d6d3da;
+
+      &.is-focus {
+        border-color: $mainCrl;
+      }
+    }
+  }
+
+  .el-tag {
+    border-radius: 2px;
+
+    &--danger {
+      color: #fff;
+      background-color: $redBtn;
+      border-color: $redBtn;
+    }
+
+    &--info {
+      color: #fff;
+      background-color: $greenBtn;
+      border-color: $greenBtn;
+    }
+  }
+
+  .el-button {    
+    border-radius: 2px;
+
+    &.el-button--small {
+      padding: 0 0.5rem;
+    }
+
+    &--search {
+      color: #fff;
+      background-color: $mainCrl;
+      border-color: $mainCrl;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #4c99c6;
+        border-color: #4c99c6;
+      }
+    }
+    
+    &--add {
+      background-color: $greenBtn;
+      border-color: $greenBtn;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #4c8267;
+        border-color: #4c8267;
+      }
+    }
+
+    &--cancel {
+      color: #fff;
+      background-color: #a1a7a4;
+      border-color: #959a97;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #b7bbb9;
+        border-color: #b7bbb9;
+      }
+    }
+
+    &--continue {
+      color: #fff;
+      background-color: #ce9234;
+      border-color: #ce9234;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #dca958;
+        border-color: #dca958;
+      }
+    }
+
+    &--bd {
+      &-edit {
+        color: #347ea9;
+        background-color: #e2f2fb;
+        border-color: #347ea9;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: #fff;
+          background-color: #438fb9;
+          border-color: #347ea9;
+        }
+      }
+
+      &-danger,
+      &-cancel {
+        color: $redBtn;
+        background-color: #ffedec;
+        border-color: $redBtn;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: #fff;
+          background-color: #c9625c;
+          border-color: $redBtn;
+        }
+      }
+
+      &-sub {
+        color: #868686;
+        background-color: #f3f3f3;
+        border-color: #a1a7a4;
+  
+        &:hover,
+        &:active,
+        &:focus {
+          color: #fff;
+          background-color: #b2b8b5;
+          border-color: #a1a7a4;
+        }
+      }
+
+      &-copy {
+        color: #43725a;
+        background-color: #dff1e8;
+        border-color: #43725a;
+  
+        &:hover,
+        &:active,
+        &:focus {
+          color: #fff;
+          background-color: #69a788;
+          border-color: #43725a;
+        }
+      }
+    }
+
+    &.is-disabled,
+    &.disabled {
+      color: #c0c4cc;
+      background-image: none;
+      background-color: #fff;
+      border-color: #ebeef5;
+      cursor: not-allowed;
+    }
+
+    i[class*='el-icon'] {
+      font-size: 1.2em;
+      vertical-align: text-bottom;
+    }
+  }
+
+  .el-checkbox {
+    .el-checkbox__input {
+      &.is-checked,
+      &.is-indeterminate {
+        .el-checkbox__inner {
+          background-color: $mainCrl;
+          border-color: $mainCrl;
+        }
+  
+        & + .el-checkbox__label {
+          color: $mainCrl;
+        }
+      }
+  
+      &.is-focus {
+        .el-checkbox__inner {
+          border-color: rgba($mainCrl, 0.85);
+        }
+      }
+    }
+  }
+
+  .complex-group {
+    @include complexStyle($grayTxt, $mainCrl);
+
+    .el-form-item {
+      margin: 0 0 0.5em;
+    }
+  
+    .el-form-item__label {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .el-button {
+      border-radius: 0;
+    }
+
+    .el-input__inner,
+    .el-textarea__inner,
+    .el-time-panel__footer,
+    .el-picker-panel__footer {
+      &::placeholder {
+        color: lighten($mainCrl, 20%);
+      }
+    }
+
+    .el-input.is-disabled .el-input__inner {
+      &::placeholder {
+        color: #ccc;
+      }
+    }
+  }
+
+  .main-table {
+    th {
+      background-color: $mainCrl;
+    }
+
+    &.el-table--enable-row-hover {
+      .el-table__body tr {
+        &:hover {
+          > td {
+            background-color: #f0fafd;
+          }
+        }
+      }
+    }
+
+    .el-table__body tr {
+      &.hover-row {
+        > td {
+          background-color: #f0fafd;
+        }
+      }
+    }
+  }
+
+  .el-pager {
+    li {
+      color: #606266;
+      background-color: #f4f4f5;
+
+      &.active,
+      &:hover {
+        color: #fff;
+        background-color: $mainCrl;
+      }
+    }
+  }
+
+  .breadcrumbBlock {
+    color: $mainCrl;
+  }
+
+  .switch-group {
+    @include switchStyle(#f56c6c, #89c9ee);
+  }
+
+  .selectTimer-group {
+    @include dateSelectStyle($mainCrl);
+  }
+
+  .el-radio-group {
+    @include radioGroup($mainCrl);
+  }
+
+  .el-radio-group {
+    &.risk-level {
+      @include riskRaido;
+    }
+  }
+
+  .searchBox,
+  .appendBox {
+    @include appendInput($mainCrl);
+
+    .el-input-group__append,
+    .el-input-group__prepend {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .uploadBox {
+    @include uploadStyle(#ebf5fa, #606266);
+
+  }
+}
+
+
