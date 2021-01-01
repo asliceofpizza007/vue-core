@@ -54,6 +54,8 @@ import apiGroup from '@api/apiGroup'
 import common from '@api/common'
 import { debounce, cloneDeep } from 'lodash'
 import { PanelMixin } from '@/mixins'
+import { groupId, permissions } from '@js/mockData'
+import { delay } from '@/utils'
 import PermissionTable from './subComponents/PermissionTable'
 
 export default {
@@ -95,7 +97,9 @@ export default {
     async getPermissionList() {
       this.loading = true
       try {
-        const res = await common.getPermissionList()
+        await delay(500)
+        // const res = await common.getPermissionList()
+        const res = cloneDeep(permissions)
         this.formData.permissions = res
       } catch {
         // pass
@@ -104,13 +108,16 @@ export default {
       }
     },
     async getRowData() {
-      const requests = [
-        apiGroup.getPermissionGroup(this.id),
-        common.getPermissionList(),
-      ]
+      // const requests = [
+      //   apiGroup.getPermissionGroup(this.id),
+      //   common.getPermissionList(),
+      // ]
       try {
         this.loading = true
-        const [rowData, permissionList] = await axios.all([...requests])
+        await delay(500)
+        // const [rowData, permissionList] = await axios.all([...requests])
+        const rowData = cloneDeep(groupId)
+        const permissionList = cloneDeep(permissions)
         Object.keys(this.formData).forEach(key => {
           if (key === 'permissions') {
             this.formData[key] = this.permissionMapping(rowData[key], permissionList)
@@ -170,7 +177,8 @@ export default {
       }
       try {
         this.loading = true
-        await api(...postData)
+        await delay(500)
+        // await api(...postData)
         this.$message({
           message,
           type: 'success',

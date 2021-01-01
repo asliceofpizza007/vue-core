@@ -62,6 +62,9 @@
 import debounce from 'lodash/debounce'
 import apiAdmin from '@api/apiAdmin'
 import { PanelMixin } from '@/mixins'
+import { delay } from '@/utils'
+import { adminId } from '@js/mockData'
+import cloneDeep from 'lodash/cloneDeep'
 
 export default {
   name: 'EditAdmin',
@@ -102,15 +105,18 @@ export default {
   methods: {
     async getAdmin() {
       try {
-        const res = await apiAdmin.getAdmin(this.id)
+        await delay(500)
+        // const res = await apiAdmin.getAdmin(this.id)
+        const res = cloneDeep(adminId)
         res.account = res.account.split('_')[1]
         Object.keys(this.formData).forEach(key => {
           if (res[key] !== null && typeof res[key] !== 'undefined') {
             this.formData[key] = res[key]
           }
         })
-      } catch {
+      } catch (err) {
         // pass
+        console.log(err)
       }
       this.loading = false
     },
@@ -127,7 +133,8 @@ export default {
         const reformPayLoad = { ...this.formDataPayload }
         delete reformPayLoad.account
         delete reformPayLoad.name
-        await apiAdmin.updateAdmin(reformPayLoad, this.id)
+        await delay(500)
+        // await apiAdmin.updateAdmin(reformPayLoad, this.id)
         this.$message({
           message: '資料更新成功',
           type: 'success',

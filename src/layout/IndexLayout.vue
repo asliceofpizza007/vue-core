@@ -56,7 +56,7 @@ export default {
     ScrollBar,
     BulletinSummary,
   },
-  mixins: [Socket],
+  // mixins: [Socket],
   data() {
     return {
       useSideTabs: process.env.VUE_APP_USESIDETABS === 'true',
@@ -116,11 +116,11 @@ export default {
     },
     toggleSideBar() {
       this.$store.dispatch('app/setSideBarCollapse')
-      this.$store.dispatch('updateUserPreferences')
+      // this.$store.dispatch('updateUserPreferences')
     },
     toggleSideTab() {
       this.$store.dispatch('app/setSideTabCollapse')
-      this.$store.dispatch('updateUserPreferences')
+      // this.$store.dispatch('updateUserPreferences')
     },
   },
 }

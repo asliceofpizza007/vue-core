@@ -30,11 +30,12 @@
 </template>
 <script>
 import apiSysNav from '@api/apiSysNav'
-import { treeNodeAttributeInject } from '@/utils'
+import { treeNodeAttributeInject, delay } from '@/utils'
 import debounce from 'lodash/debounce'
 import columnModule from '@js/tableProp'
 import { CommonMixin } from '@/mixins'
 import TreeColumn from '@c/TreeColumn'
+import { systemMenus } from '@js/mockData'
 
 export default {
   name: 'SystemNavSetting',
@@ -160,7 +161,9 @@ export default {
     async getList() {
       this.loading = true
       try {
-        const res = await apiSysNav.getSystemNavList()
+        await delay(500)
+        // const res = await apiSysNav.getSystemNavList()
+        const res = systemMenus
         this.tableData = treeNodeAttributeInject(res.list, this.defaultExpandAll, 'id')
         this.setTableHeight()
       } catch {
@@ -237,7 +240,8 @@ export default {
           type: 'error',
         })
         try {
-          await apiSysNav.deleteSystemNav(id)
+          await delay(500)
+          // await apiSysNav.deleteSystemNav(id)
           this.$message({
             showClose: true,
             type: 'success',

@@ -38,11 +38,11 @@ export default {
     }),
   },
   created() {
-    this.getBulletinSummaries()
-    this.$bus.$on('refresh-bulletin-summary', this.getBulletinSummaries)
+    // this.getBulletinSummaries()
+    // this.$bus.$on('refresh-bulletin-summary', this.getBulletinSummaries)
   },
   beforeDestroy() {
-    this.$bus.$off('refresh-bulletin-summary')
+    // this.$bus.$off('refresh-bulletin-summary')
   },
   methods: {
     async getBulletinSummaries() {

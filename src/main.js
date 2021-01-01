@@ -10,16 +10,16 @@ Vue.use(animated)
 document.documentElement.setAttribute('lang', navigator.language)
 
 /* Froala Editor */
-import 'froala-editor/js/froala_editor.pkgd.min'
-// Import third party plugins
-// import 'froala-editor/js/third_party/embedly.min'
-import 'froala-editor/js/third_party/font_awesome.min'
-import 'froala-editor/js/third_party/spell_checker.min'
-import 'froala-editor/js/third_party/image_tui.min'
-import 'froala-editor/js/languages/zh_tw'
-import 'font-awesome/css/font-awesome.css'
-import 'froala-editor/css/froala_editor.pkgd.min.css'
-import 'froala-editor/css/froala_style.min.css'
+// import 'froala-editor/js/froala_editor.pkgd.min'
+// // Import third party plugins
+// // import 'froala-editor/js/third_party/embedly.min'
+// import 'froala-editor/js/third_party/font_awesome.min'
+// import 'froala-editor/js/third_party/spell_checker.min'
+// import 'froala-editor/js/third_party/image_tui.min'
+// import 'froala-editor/js/languages/zh_tw'
+// import 'font-awesome/css/font-awesome.css'
+// import 'froala-editor/css/froala_editor.pkgd.min.css'
+// import 'froala-editor/css/froala_style.min.css'
 
 import VueFroala from 'vue-froala-wysiwyg'
 

@@ -5,5 +5,10 @@
 <script>
 export default {
   name: 'app',
+  created() {
+    this.$router.push({
+      path: '/login',
+    })
+  },
 }
 </script>

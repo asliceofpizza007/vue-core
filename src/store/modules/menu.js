@@ -1,11 +1,13 @@
-import common from '@api/common'
+// import common from '@api/common'
+import { delay } from '@/utils'
+import { menuList } from '@js/mockData'
 import {
   SET_MENU_LIST
 } from '../mutation-types'
 
-function menuToRoutes(menuList, routes = [], alias = []) {
-  if (Array.isArray(menuList)) {
-    menuList.forEach(list => {
+function menuToRoutes(menu, routes = [], alias = []) {
+  if (Array.isArray(menu)) {
+    menu.forEach(list => {
       const {
         menuType,
         openType,
@@ -40,15 +42,16 @@ const state = {
 }
 
 const mutations = {
-  [SET_MENU_LIST](state, menuList) {
-    state.menuList = menuList
+  [SET_MENU_LIST](state, menu) {
+    state.menuList = menu
   },
 }
 
 const actions = {
   async generateRoutes({ commit }) {
     try {
-      const menuList = await common.getMenuList()
+      // const menuList = await common.getMenuList()
+      await delay(300)
       commit(SET_MENU_LIST, menuList)
       const {
         asyncRoutes,

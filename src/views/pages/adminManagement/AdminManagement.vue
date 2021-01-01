@@ -65,6 +65,8 @@ import apiGroup from '@api/apiGroup'
 import TableWrapper from '@c/TableWrapper'
 import columnModule from '@js/tableProp'
 import { CommonMixin } from '@/mixins'
+import { delay } from '@/utils'
+import { groupOptions, admins } from '@js/mockData'
 
 export default {
   name: 'AdminManagement',
@@ -133,18 +135,20 @@ export default {
   },
   methods: {
     async getGroupsList() {
-      const res = await apiGroup.getPermissionGroupOptions({})
-      this.groups = res
+      await delay(500)
+      // const res = await apiGroup.getPermissionGroupOptions({})
+      this.groups = groupOptions
     },
     async getList() {
       this.listLoading = true
       try {
-        const res = await apiAdmin.getAdminList(this.getPayLoad)
-        res.list.forEach(item => {
+        await delay(500)
+        // const res = await apiAdmin.getAdminList(this.getPayLoad)
+        admins.list.forEach(item => {
           const member = item
           item.account = member.account.split('_')[1]
         })
-        this.tbData = res
+        this.tbData = admins
       } catch {
         // pass
       } finally {

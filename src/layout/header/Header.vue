@@ -77,7 +77,10 @@ export default {
       // platformSet: [],
       showNotify: false,
       showUserset: false,
-      userData: {},
+      userData: {
+        account: 123456,
+        nickName: 'Austin',
+      },
       useSideTabs: process.env.VUE_APP_USESIDETABS === 'true',
     }
   },
@@ -86,10 +89,10 @@ export default {
       isSideTabCollapse: state => state.isSideTabCollapse,
     }),
   },
-  created() {
-    this.userData = JSON.parse(localStorage.getItem('userData'))
-    this.userData.account = this.userData.account.split('_')[1]
-  },
+  // created() {
+  //   this.userData = JSON.parse(localStorage.getItem('userData'))
+  //   this.userData.account = this.userData.account.split('_')[1]
+  // },
   methods: {
     toggleSideTab() {
       this.$store.dispatch('app/setSideTabCollapse')

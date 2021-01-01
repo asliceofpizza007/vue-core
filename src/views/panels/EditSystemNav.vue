@@ -227,10 +227,12 @@ import axios from 'axios'
 import apiSysNav from '@api/apiSysNav'
 import common from '@api/common'
 import debounce from 'lodash/debounce'
+import cloneDeep from 'lodash/cloneDeep'
 import iconOptions from '@/assets/js/iconOptions'
 import { PanelMixin } from '@/mixins'
-import { numberValidator } from '@/utils'
+import { numberValidator, delay } from '@/utils'
 import { mapState } from 'vuex'
+import { systemMenuSequence, permissions, systemMenuId } from '@js/mockData'
 
 export default {
   name: 'EditSystemNav',
@@ -366,7 +368,9 @@ export default {
   methods: {
     async getRowData() {
       try {
-        const res = await apiSysNav.getSystemNav(this.id)
+        await delay(500)
+        // const res = await apiSysNav.getSystemNav(this.id)
+        const res = cloneDeep(systemMenuId)
         this.tmpCode = res.menuCode
         Object.keys(this.formData).forEach(key => {
           if (res[key] !== null && typeof res[key] !== 'undefined') {
@@ -392,13 +396,16 @@ export default {
       }
     },
     async getOptions() {
-      const requests = [
-        apiSysNav.getSystemNavSequence(),
-        common.getPermissionRoutes(),
-      ]
+      // const requests = [
+      //   apiSysNav.getSystemNavSequence(),
+      //   common.getPermissionRoutes(),
+      // ]
       this.loading = true
       try {
-        const [navSequence, permissionRoutes] = await axios.all([...requests])
+        await delay(500)
+        const permissionRoutes = permissions
+        const navSequence = systemMenuSequence
+        // const [navSequence, permissionRoutes] = await axios.all([...requests])
         this.permissionRoutes = permissionRoutes
         let parentList = [{ id: 1, title: '無' }]
         navSequence.list.forEach(list => {
@@ -462,7 +469,8 @@ export default {
       }
       try {
         this.loading = true
-        await api(...postData)
+        await delay(500)
+        // await api(...postData)
         this.$message({
           message,
           type: 'success',

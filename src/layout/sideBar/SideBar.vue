@@ -28,12 +28,12 @@
           )
             i.el-icon-s-home
             span(slot="title") 首頁
-          a(href="/Themes" target="_blank"
-            style="text-decoration: none"
-          )
-            el-menu-item(v-if="environment === 'development'")
-              i.fa.fa-heart
-              span(slot="title") 主題樣式
+          //- a(href="/Themes" target="_blank"
+          //-   style="'text-decoration': 'none'"
+          //- )
+          //-   el-menu-item(v-if="environment === 'development'")
+          //-     i.fa.fa-heart
+          //-     span(slot="title") 主題樣式
         el-menu-item-group.menuGroup(v-for="list in menuList" :key="list.id")
           template(slot="title")
             span(v-if="isMobile ? true : !isSideBarCollapse")
@@ -107,7 +107,7 @@ export default {
     },
     toggleSideBar() {
       this.$store.dispatch('app/setSideBarCollapse')
-      this.$store.dispatch('updateUserPreferences')
+      // this.$store.dispatch('updateUserPreferences')
     },
     emitCheckTabNav(e) {
       if (e.propertyName === 'width') {
@@ -118,7 +118,7 @@ export default {
       if (this.$route.path !== path) {
         if (this.isMobile) {
           this.$store.dispatch('app/setSideBarCollapse')
-          this.$store.dispatch('updateUserPreferences')
+          // this.$store.dispatch('updateUserPreferences')
         }
         this.$router.push({
           path,

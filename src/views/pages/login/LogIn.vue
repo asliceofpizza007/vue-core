@@ -48,6 +48,7 @@
 <script>
 import common from '@api/common'
 import { registerRouter } from '@/router/navigation'
+import { delay } from '@/utils'
 import weather from './js/weather'
 
 export default {
@@ -84,10 +85,11 @@ export default {
         password: this.formData.password,
       }
       try {
-        const emsRes = await common.login(data)
-        const { ctlToken } = emsRes
-        localStorage.setItem('ctlToken', ctlToken)
-        localStorage.setItem('userData', JSON.stringify(emsRes))
+        await delay(500)
+        // const emsRes = await common.login(data)
+        // const { ctlToken } = emsRes
+        // localStorage.setItem('ctlToken', ctlToken)
+        // localStorage.setItem('userData', JSON.stringify(emsRes))
         await registerRouter()
         this.$router.push({
           path: '/',

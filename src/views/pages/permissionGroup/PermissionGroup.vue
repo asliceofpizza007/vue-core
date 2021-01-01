@@ -61,6 +61,8 @@ import TableWrapper from '@c/TableWrapper'
 import apiGroup from '@api/apiGroup'
 import columnModule from '@js/tableProp'
 import { CommonMixin } from '@/mixins'
+import { groups } from '@js/mockData'
+import { delay } from '@/utils'
 
 export default {
   name: 'PermissionGroup',
@@ -109,7 +111,9 @@ export default {
     async getList() {
       this.listLoading = true
       try {
-        const res = await apiGroup.getPermissionGroupList(this.getPayLoad)
+        await delay(500)
+        // const res = await apiGroup.getPermissionGroupList(this.getPayLoad)
+        const res = groups
         this.tbData = res
       } catch {
         // pass

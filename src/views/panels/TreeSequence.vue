@@ -51,6 +51,8 @@
 <script>
 import apiSysNav from '@api/apiSysNav'
 import debounce from 'lodash/debounce'
+import { systemMenuSequence } from '@js/mockData'
+import { delay } from '@/utils'
 
 export default {
   name: 'SystemNavSequence',
@@ -93,7 +95,9 @@ export default {
     async getTreeData() {
       try {
         this.loading = true
-        const res = await this.get[this.parent]()
+        await delay(500)
+        // const res = await this.get[this.parent]()
+        const res = systemMenuSequence
         this.dataSource = res.list
         await this.$nextTick()
         this.handleExpandTypeChange(this.expandedType)
@@ -172,7 +176,8 @@ export default {
       this.dataFormat(this.dataSource)
       const params = this.dataSequence
       try {
-        await this.update[this.parent](params)
+        await delay(500)
+        // await this.update[this.parent](params)
         this.$message({
           showClose: true,
           type: 'success',

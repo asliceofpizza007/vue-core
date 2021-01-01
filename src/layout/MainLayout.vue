@@ -6,8 +6,13 @@
 import common from '@api/common'
 import { mapState } from 'vuex'
 import axios from 'axios'
-import { flattenTree } from '@/utils'
+import { flattenTree, delay } from '@/utils'
 import { cloneDeep, remove } from 'lodash'
+import {
+  userPreferences as preference,
+  enumRefs,
+  hiddenEmp
+} from '@js/mockData'
 
 export default {
   name: 'MainLayout',
@@ -27,22 +32,23 @@ export default {
   },
   methods: {
     async getDefaultData() {
-      const requests = [
-        common.getUserPreference(),
-        common.getEnumRefs(),
-        common.getAllEmployees(),
-      ]
-      const options = [
-        'getContractorList',
-        'getSitePlatformList',
-        'getSiteTypeList',
-        'getSitePurposeList',
-      ]
+      // const requests = [
+      //   common.getUserPreference(),
+      //   common.getEnumRefs(),
+      //   common.getAllEmployees(),
+      // ]
+      // const options = [
+      //   'getContractorList',
+      //   'getSitePlatformList',
+      //   'getSiteTypeList',
+      //   'getSitePurposeList',
+      // ]
       this.loading = true
       try {
-        const [preference, enumRefs, allEmployees] = await axios.all([...requests])
+        await delay(500)
+        // const [preference, enumRefs, allEmployees] = await axios.all([...requests])
         this.$store.dispatch('app/setEnumRefs', enumRefs)
-        const Employees = this.removeRepeat(allEmployees)
+        const Employees = this.removeRepeat(hiddenEmp)
         this.$store.dispatch('app/setAllEmployees', Employees)
         if (preference) {
           const { userPreferences } = preference
@@ -57,7 +63,7 @@ export default {
             this.$store.dispatch('tabs/setTabUserPreferences', tabPreferences)
           }
         }
-        await Promise.all([...options.map(action => this.$store.dispatch(`options/${action}`))])
+        // await Promise.all([...options.map(action => this.$store.dispatch(`options/${action}`))])
         this.redirectRouter()
       } catch {
         // pass
@@ -127,7 +133,7 @@ export default {
           tabConfig.viewType = viewType
         }
         this.$store.dispatch('tabs/setTabs', tabConfig)
-        this.$store.dispatch('updateUserPreferences')
+        // this.$store.dispatch('updateUserPreferences')
         this.$bus.$emit('check-tab-nav-width')
       }
     },
