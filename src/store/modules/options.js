@@ -1,10 +1,5 @@
 import apiBulletins from '@api/apiBulletins'
 import apiHandovers from '@api/apiHandovers'
-import apiHandoverTags from '@api/apiHandoverTags'
-import apiContractors from '@api/apiContractors'
-import apiSitePlatform from '@api/siteApi/apiSitePlatform'
-import apiSiteType from '@api/siteApi/apiSiteType'
-import apiSitePurpose from '@api/siteApi/apiSitePurpose'
 import {
   SET_BULLETIN_CLASS_LIST,
   SET_HANDOVER_TYPE_LIST,
@@ -57,26 +52,6 @@ const actions = {
   async getHandoverTypeList({ commit }) {
     const res = await apiHandovers.getHandoverTypeTags()
     commit(SET_HANDOVER_TYPE_LIST, res)
-  },
-  async getHandoverTagList({ commit }) {
-    const res = await apiHandoverTags.getHandoverTagOptions()
-    commit(SET_HANDOVER_TAG_LIST, res)
-  },
-  async getContractorList({ commit }) {
-    const res = await apiContractors.getContractorOptions()
-    commit(SET_CONTRACTOR_LIST, res)
-  },
-  async getSitePlatformList({ commit }) {
-    const res = await apiSitePlatform.getSitePlatformOptions()
-    commit(SET_SITE_PLATFORM_LIST, res.list)
-  },
-  async getSiteTypeList({ commit }) {
-    const res = await apiSiteType.getSiteTypeOptions()
-    commit(SET_SITE_TYPE_LIST, res.list)
-  },
-  async getSitePurposeList({ commit }) {
-    const res = await apiSitePurpose.getSitePurposeOptions()
-    commit(SET_SITE_PURPOSE_LIST, res.list)
   },
 }
 

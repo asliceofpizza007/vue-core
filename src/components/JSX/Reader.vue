@@ -1,7 +1,6 @@
 <script>
 import apiBulletins from '@api/apiBulletins'
 import apiHandovers from '@api/apiHandovers'
-import apiSitePassword from '@api/siteApi/apiSitePassword'
 
 export default {
   name: 'Reader',
@@ -16,7 +15,6 @@ export default {
       const apiMap = {
         BulletinManagement: apiBulletins.getBulletinsReaders,
         HandoverInfoManagement: apiHandovers.getHandoversReaders,
-        SitePassword: apiSitePassword.getPasswordsReaders,
       }
       return apiMap[this.$route.name]
     },
