@@ -1,0 +1,72 @@
+diff --git a/node_modules/vue-js-panel/src/JsPanel.vue b/node_modules/vue-js-panel/src/JsPanel.vue
+index 266190b..52ea187 100644
+--- a/node_modules/vue-js-panel/src/JsPanel.vue
++++ b/node_modules/vue-js-panel/src/JsPanel.vue
+@@ -1,15 +1,12 @@
+ <template>
+   <div v-if="visible">
+-    <slot />
+-    <slot
+-      v-show="false"
+-      name="headerToolbar"
+-    />
++    <slot/>
++    <slot v-show="false" name="headerToolbar"/>
+   </div>
+ </template>
+ <script>
+-import { jsPanel } from 'jspanel4/es6module/jspanel.min.js'
+-// import 'jspanel4/dist/jspanel.min.css'
++// import { jsPanel } from 'jspanel4/es6module/jspanel.min.js'
++const jsPanel = require('jspanel4/dist/jspanel.min.js')
+ 
+ export default {
+   name: 'JsPanel',
+@@ -22,11 +19,16 @@ export default {
+ 
+     options: {
+       type: Object,
+-      required: true,
+       default: () => ({})
+     }
+   },
+ 
++  data() {
++    return {
++      instance: null
++    }
++  },
++
+   computed: {
+     panelOptions() {
+       return Object.assign({ onclosed: this.close }, this.options)
+@@ -37,6 +39,10 @@ export default {
+     visible(isVisible) {
+       if (isVisible) {
+         this.createPanel()
++      } else {
++        if (this.instance) {
++          this.instance.close()
++        }
+       }
+     }
+   },
+@@ -62,12 +68,15 @@ export default {
+           options
+         )
+       }
+-      jsPanel.create(options)
++      this.instance = jsPanel.create(options)
++      this.$emit('instances', this.instance)
+     },
+ 
+     close() {
+-      this.$emit('close')
+-      this.$emit('update:visible', false)
++      this.instance = undefined
++      if (this.visible) {
++        this.$emit('close')
++      }
+     }
+   }
+ }
